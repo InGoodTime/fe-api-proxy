@@ -1,0 +1,57 @@
+{
+    "name": "fe-api-proxy",
+    "version": "0.1.1",
+    "description": "TypeScript service to sync API docs (Swagger, Postman, Apifox, custom) and provide fetchers for real requests.",
+    "type": "module",
+    "main": "client/index.ts",
+    "module": "client/index.ts",
+    "types": "client/index.ts",
+    "exports": {
+        ".": {
+            "import": "./client/index.ts",
+            "default": "./client/index.ts"
+        },
+        "./client": "./client/index.ts",
+        "./client/*": "./client/*",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "client"
+    ],
+    "bin": {
+        "fe-api-proxy": "dist/cli.js"
+    },
+    "scripts": {
+        "refresh": "node --loader ts-node/esm index.ts",
+        "publish": "node ./scripts/publish.mjs",
+        "build": "tsc -p tsconfig.json",
+        "clean": "rimraf dist",
+        "prepublishOnly": "npm run build",
+        "test": "vitest run",
+        "testcase": "node --loader ts-node/esm --test"
+    },
+    "keywords": [
+        "swagger",
+        "openapi",
+        "postman",
+        "apifox",
+        "api",
+        "client",
+        "fetch",
+        "typescript"
+    ],
+    "author": "",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.24",
+        "rimraf": "^5.0.0",
+        "typescript": "^5.4.0",
+        "vitest": "^1.4.0"
+    },
+    "dependencies": {
+        "ts-node": "^10.9.2"
+    }
+}
